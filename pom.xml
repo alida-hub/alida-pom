@@ -109,14 +109,14 @@
 	  <groupId>de.unihalle.informatik.AlidaMiToBo.maven.plugins.help</groupId>
 	  <artifactId>comment-parser-maven-plugin</artifactId>
 	  <version>${maven.plugin.local.commentparser.version}</version>
-	<executions>
-          <execution>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>parse-comments</goal>
-            </goals>
-          </execution>
-        </executions>
+	  <executions>
+            <execution>
+              <phase>process-resources</phase>
+              <goals>
+		<goal>parse-comments</goal>
+              </goals>
+            </execution>
+          </executions>
 	</plugin>
 	
 	<!-- copy dependencies incl. help jar to local folder -->
@@ -124,20 +124,20 @@
 	  <groupId>org.apache.maven.plugins</groupId>
 	  <artifactId>maven-dependency-plugin</artifactId>
 	  <version>${maven.plugin.dependency.version}</version>
-        <configuration>
-          <outputDirectory>
-            ${project.build.directory}/dependency-jars
-          </outputDirectory>
-        </configuration>
-        <executions>
-          <execution>
-            <id>Copy dependency jars</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-dependencies</goal>
-            </goals>
-          </execution>
-        </executions>
+          <configuration>
+            <outputDirectory>
+              ${project.build.directory}/dependency-jars
+            </outputDirectory>
+          </configuration>
+          <executions>
+            <execution>
+              <id>Copy dependency jars</id>
+              <phase>process-resources</phase>
+              <goals>
+		<goal>copy-dependencies</goal>
+              </goals>
+            </execution>
+          </executions>
 	</plugin>
 	
 	<!-- update helpset archive and copy files to target/classes -->
@@ -154,7 +154,7 @@
             </execution>
           </executions>
 	</plugin>
-      
+	
 	<plugin>
 	  <groupId>org.apache.maven.plugins</groupId>
 	  <artifactId>maven-compiler-plugin</artifactId>
