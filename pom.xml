@@ -19,7 +19,8 @@
     <YEAR>2018</YEAR>
     <java.source.version>1.8</java.source.version>
     
-    <!-- settings for Alida/MiToBo stuff -->
+    <!-- settings for Alida stuff -->
+    <alida.mitobo.help.version>1.8-SNAPSHOT</alida.mitobo.help.version>
     <latexlet.version>1.2f8-SNAPSHOT</latexlet.version>
     
     <!-- versions of artifacts we depend on -->
@@ -395,11 +396,6 @@
 	<groupId>org.eclipse.jgit</groupId>
 	<artifactId>org.eclipse.jgit</artifactId>
 	<version>${jgit.version}</version>
-      </dependency>
-      <dependency>
-	<groupId>de.unihalle.informatik.Alida</groupId>
-	<artifactId>alida-xml</artifactId>
-	<version>${alida.xml.version}</version>
       </dependency>
       <dependency>
 	<groupId>de.unihalle.informatik.AlidaMiToBo</groupId>
