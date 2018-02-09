@@ -30,6 +30,7 @@
     <junit.version>4.12</junit.version>
     <sezpoz.version>1.12</sezpoz.version>
     <slf4j.version>1.7.25</slf4j.version>
+    <xmlbeans.version>2.6.0</xmlbeans.version>
     
     <!-- versions of our own Maven plugins -->
     <maven.plugin.local.commentparser.version>1.6</maven.plugin.local.commentparser.version>
@@ -47,6 +48,7 @@
     <maven.plugin.resources.version>3.0.2</maven.plugin.resources.version>
     <maven.plugin.site.version>3.6</maven.plugin.site.version>
     <maven.plugin.surefire.version>2.20</maven.plugin.surefire.version>
+    <maven.plugin.xmlbeans.version>2.3.3</maven.plugin.xmlbeans.version>
     
   </properties>
 
@@ -225,7 +227,13 @@
 	  <artifactId>maven-assembly-plugin</artifactId>
 	  <version>${maven.plugin.assembly.version}</version>
 	</plugin>
-	
+
+	<plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>xmlbeans-maven-plugin</artifactId>
+	  <version>${maven.plugin.xmlbeans.version}</version>
+	</plugin>
+
 	<plugin>
 	  <groupId>org.apache.maven.plugins</groupId>
 	  <artifactId>maven-javadoc-plugin</artifactId>
@@ -402,6 +410,12 @@
 	<groupId>org.slf4j</groupId>
 	<artifactId>slf4j-log4j12</artifactId>
 	<version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+	<groupId>org.apache.xmlbeans</groupId>
+	<artifactId>xmlbeans</artifactId>
+	<version>${xmlbeans.version}</version>
+	<scope>compile</scope>
       </dependency>
       <!-- Test dependencies -->
       <dependency>
