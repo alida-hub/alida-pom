@@ -3,7 +3,7 @@
 
   <groupId>de.unihalle.informatik.Alida</groupId>
   <artifactId>alida-pom</artifactId>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>alida-pom</name>
@@ -20,7 +20,7 @@
     <java.source.version>1.8</java.source.version>
     
     <!-- settings for Alida stuff -->
-    <alida.mitobo.help.version>1.7</alida.mitobo.help.version>
+    <alida.mitobo.help.version>1.8-SNAPSHOT</alida.mitobo.help.version>
     <latexlet.version>1.2f8-SNAPSHOT</latexlet.version>
     
     <!-- versions of artifacts we depend on -->
