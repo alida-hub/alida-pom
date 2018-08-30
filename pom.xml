@@ -214,6 +214,7 @@
 	  <artifactId>maven-surefire-plugin</artifactId>
 	  <version>${maven.plugin.surefire.version}</version>
 	  <configuration>
+	    <skip>${skip.tests}</skip>
 	    <jvm>${env.JAVA_HOME}/bin/java</jvm>
 	    <forkMode>once</forkMode>
 	  </configuration>
@@ -462,12 +463,19 @@
       </activation>
       <properties>
 	<skip.javadocs>false</skip.javadocs>
+	<skip.tests>false</skip.tests>
       </properties>
     </profile>
     <profile>
       <id>no-docs</id>
       <properties>
 	<skip.javadocs>true</skip.javadocs>
+      </properties>
+    </profile>
+    <profile>
+      <id>no-tests</id>
+      <properties>
+	<skip.tests>true</skip.tests>
       </properties>
     </profile>
   </profiles> 
