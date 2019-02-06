@@ -16,7 +16,7 @@
     <!-- general settings -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     
-    <YEAR>2018</YEAR>
+    <YEAR>2019</YEAR>
     <java.source.version>1.8</java.source.version>
     
     <!-- settings for Alida stuff -->
