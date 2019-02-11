@@ -22,13 +22,15 @@
     <!-- settings for Alida stuff -->
     <alida.mitobo.help.version>1.8-SNAPSHOT</alida.mitobo.help.version>
     <latexlet.version>1.2f8-SNAPSHOT</latexlet.version>
-    
+
+    <!-- SciJava pom file defining several global dependencies
+	 and versions artifact versions MiToBo relies on -->
+    <scijava.version>25.0.0</scijava.version>
+
     <!-- versions of artifacts we depend on -->
     <jargs.version>1.0</jargs.version>
     <javahelp.version>2.0.05</javahelp.version>
     <jgit.version>4.8.0.201706111038-r</jgit.version>
-    <jgraphx.version>3.4.1.3</jgraphx.version>
-    <junit.version>4.12</junit.version>
     <sezpoz.version>1.12</sezpoz.version>
     <slf4j.version>1.7.25</slf4j.version>
     <xmlbeans.version>2.6.0</xmlbeans.version>
@@ -38,18 +40,18 @@
     <maven.plugin.local.helpset.version>1.4</maven.plugin.local.helpset.version>
 
     <!-- versions of public Maven plugins -->
-    <maven.plugin.assembly.version>3.1.0</maven.plugin.assembly.version>
-    <maven.plugin.compiler.version>3.7.0</maven.plugin.compiler.version>
-    <maven.plugin.dependency.version>3.0.1</maven.plugin.dependency.version>
+    <maven.plugin.assembly.version>3.1.1</maven.plugin.assembly.version>
+    <maven.plugin.compiler.version>3.8.0</maven.plugin.compiler.version>
+    <maven.plugin.dependency.version>3.1.1</maven.plugin.dependency.version>
     <maven.plugin.enforcer.version>1.4.1</maven.plugin.enforcer.version>
     <maven.plugin.exec.version>1.6.0</maven.plugin.exec.version>
     <maven.plugin.filtering.version>3.1.1</maven.plugin.filtering.version>
-    <maven.plugin.jar.version>3.0.2</maven.plugin.jar.version>
-    <maven.plugin.javadoc.version>2.10.4</maven.plugin.javadoc.version>
-    <maven.plugin.processor.version>3.3.1</maven.plugin.processor.version>
-    <maven.plugin.resources.version>3.0.2</maven.plugin.resources.version>
-    <maven.plugin.site.version>3.6</maven.plugin.site.version>
-    <maven.plugin.surefire.version>2.20</maven.plugin.surefire.version>
+    <maven.plugin.jar.version>3.1.1</maven.plugin.jar.version>
+    <maven.plugin.javadoc.version>3.0.1</maven.plugin.javadoc.version>
+    <maven.plugin.processor.version>3.3.3</maven.plugin.processor.version>
+    <maven.plugin.resources.version>3.1.0</maven.plugin.resources.version>
+    <maven.plugin.site.version>3.7.1</maven.plugin.site.version>
+    <maven.plugin.surefire.version>2.20.1</maven.plugin.surefire.version>
     <maven.plugin.xmlbeans.version>2.3.3</maven.plugin.xmlbeans.version>
     
   </properties>
@@ -250,10 +252,12 @@
 	  <configuration>
 	    <skip>${skip.javadocs}</skip>
 	    <stylesheet>java</stylesheet>
-	    <javadocVersion>${java.source.version}</javadocVersion>
+	    <javadocVersion>1.8.0</javadocVersion>
 	    <stylesheet>java</stylesheet>
             <show>private</show>
 	    <additionalparam>-Xdoclint:none</additionalparam>
+	    <additionalOptions>-Xdoclint:none</additionalOptions>
+            <additionalJOption>-Xdoclint:none</additionalJOption>
 
             <taglets>
               <taglet>
@@ -359,6 +363,10 @@
       <url>https://moon.informatik.uni-halle.de/archiva/repository/releases/</url>
       <layout>default</layout>
     </repository>
+    <repository>
+      <id>imagej.public</id>
+      <url>http://maven.imagej.net/content/groups/public</url>
+    </repository>
   </repositories>
 
   <pluginRepositories>
@@ -377,7 +385,18 @@
   </pluginRepositories>
 
   <dependencyManagement>
+
     <dependencies>
+
+      <!-- SciJava dependency -->
+      <dependency>
+	<groupId>org.scijava</groupId>
+	<artifactId>pom-scijava</artifactId>
+	<version>${scijava.version}</version>
+	<type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
       <!-- Compile dependencies -->
       <dependency>
 	<groupId>javax.help</groupId>
@@ -396,11 +415,12 @@
 	<version>${jargs.version}</version>
 	<scope>compile</scope>
       </dependency>
+      <!-- ... inherited from SciJava ...
       <dependency>
-	<groupId>org.tinyjee.jgraphx</groupId>
-	<artifactId>jgraphx</artifactId>
-	<version>${jgraphx.version}</version> 
+        <groupId>org.jgrapht</groupId>
+	<artifactId>jgrapht-core</artifactId>
       </dependency>
+      -->
       <dependency>
 	<groupId>org.eclipse.jgit</groupId>
 	<artifactId>org.eclipse.jgit</artifactId>
@@ -422,13 +442,13 @@
 	<version>${xmlbeans.version}</version>
 	<scope>compile</scope>
       </dependency>
-      <!-- Test dependencies -->
+      <!-- ... inherited from SciJava ...
       <dependency>
 	<groupId>junit</groupId>
 	<artifactId>junit</artifactId>
-	<version>${junit.version}</version>
 	<scope>test</scope>
       </dependency>
+      -->
     </dependencies>
   </dependencyManagement>
 
