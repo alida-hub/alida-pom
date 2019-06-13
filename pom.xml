@@ -25,7 +25,7 @@
 
     <!-- SciJava pom file defining several global dependencies
 	 and versions artifact versions MiToBo relies on -->
-    <scijava.version>25.0.0</scijava.version>
+    <scijava.version>26.0.0</scijava.version>
 
     <!-- versions of artifacts we depend on -->
     <jargs.version>1.0</jargs.version>
