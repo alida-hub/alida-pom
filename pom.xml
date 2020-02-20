@@ -3,7 +3,7 @@
 
   <groupId>de.unihalle.informatik.Alida</groupId>
   <artifactId>alida-pom</artifactId>
-  <version>1.4-SNAPSHOT</version>
+  <version>1.4</version>
   <packaging>pom</packaging>
 
   <name>alida-pom</name>

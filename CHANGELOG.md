@@ -14,6 +14,14 @@ The format of the file is based on a template from [Keep a Changelog](http://kee
 
 ### Fixed
 
+## [1.4] - 2020-02-20
+Birgit Moeller - <birgit.moeller@informatik.uni-halle.de>
+- Released Alida Parent POM 1.4
+
+### Changed
+- SciJava dependency updated to 28.0.0
+- updated several dependencies and Maven plugins
+
 ## [1.3] - 2019-07-25
 Birgit Moeller - <birgit.moeller@informatik.uni-halle.de>
 - Released Alida Parent POM 1.3
