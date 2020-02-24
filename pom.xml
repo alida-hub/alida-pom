@@ -20,7 +20,6 @@
     <java.source.version>1.8</java.source.version>
     
     <!-- settings for Alida stuff -->
-    <alida.mitobo.help.version>1.8-SNAPSHOT</alida.mitobo.help.version>
     <latexlet.version>1.2f8-SNAPSHOT</latexlet.version>
 
     <!-- SciJava pom file defining several global dependencies
@@ -29,7 +28,6 @@
 
     <!-- versions of artifacts we depend on -->
     <jargs.version>1.0</jargs.version>
-    <javahelp.version>2.0.05</javahelp.version>
     <jgit.version>5.6.1.202002131546-r</jgit.version>
     <sezpoz.version>1.12</sezpoz.version>
     <slf4j.version>1.7.30</slf4j.version>
@@ -116,21 +114,6 @@
 	  <version>${maven.plugin.resources.version}</version>
 	</plugin>
 	
-	<!-- prepare packaging, extract online help comments -->
-	<plugin>
-	  <groupId>de.unihalle.informatik.AlidaMiToBo.maven.plugins.help</groupId>
-	  <artifactId>comment-parser-maven-plugin</artifactId>
-	  <version>${maven.plugin.local.commentparser.version}</version>
-	  <executions>
-            <execution>
-              <phase>process-resources</phase>
-              <goals>
-		<goal>parse-comments</goal>
-              </goals>
-            </execution>
-          </executions>
-	</plugin>
-	
 	<!-- copy dependencies incl. help jar to local folder -->
 	<plugin>
 	  <groupId>org.apache.maven.plugins</groupId>
@@ -147,21 +130,6 @@
               <phase>process-resources</phase>
               <goals>
 		<goal>copy-dependencies</goal>
-              </goals>
-            </execution>
-          </executions>
-	</plugin>
-	
-	<!-- update helpset archive and copy files to target/classes -->
-	<plugin>
-	  <groupId>de.unihalle.informatik.AlidaMiToBo.maven.plugins.help</groupId>
-	  <artifactId>helpset-file-injector-maven-plugin</artifactId>
-	  <version>${maven.plugin.local.helpset.version}</version>
-	  <executions>
-            <execution>
-              <phase>process-resources</phase>
-              <goals>
-		<goal>update-helpset</goal>
               </goals>
             </execution>
           </executions>
@@ -399,11 +367,6 @@
 
       <!-- Compile dependencies -->
       <dependency>
-	<groupId>javax.help</groupId>
-	<artifactId>javahelp</artifactId>
-	<version>${javahelp.version}</version>
-      </dependency>
-      <dependency>
 	<groupId>net.java.sezpoz</groupId>
 	<artifactId>sezpoz</artifactId>
 	<version>${sezpoz.version}</version>
@@ -425,11 +388,6 @@
 	<groupId>org.eclipse.jgit</groupId>
 	<artifactId>org.eclipse.jgit</artifactId>
 	<version>${jgit.version}</version>
-      </dependency>
-      <dependency>
-	<groupId>de.unihalle.informatik.AlidaMiToBo</groupId>
-	<artifactId>help-resources</artifactId>
-	<version>${alida.mitobo.help.version}</version>
       </dependency>
       <dependency> 
 	<groupId>org.slf4j</groupId>
