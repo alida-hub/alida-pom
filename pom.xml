@@ -33,12 +33,9 @@
     <slf4j.version>1.7.30</slf4j.version>
     <xmlbeans.version>2.6.0</xmlbeans.version>
     
-    <!-- versions of our own Maven plugins -->
-    <maven.plugin.local.commentparser.version>1.6</maven.plugin.local.commentparser.version>
-    <maven.plugin.local.helpset.version>1.4</maven.plugin.local.helpset.version>
-
     <!-- versions of public Maven plugins -->
     <maven.plugin.assembly.version>3.2.0</maven.plugin.assembly.version>
+    <maven.plugin.buildhelper.version>3.1.0</maven.plugin.buildhelper.version>
     <maven.plugin.compiler.version>3.8.1</maven.plugin.compiler.version>
     <maven.plugin.dependency.version>3.1.1</maven.plugin.dependency.version>
     <maven.plugin.enforcer.version>1.4.1</maven.plugin.enforcer.version>
@@ -46,6 +43,7 @@
     <maven.plugin.filtering.version>3.1.1</maven.plugin.filtering.version>
     <maven.plugin.jar.version>3.2.0</maven.plugin.jar.version>
     <maven.plugin.javadoc.version>3.1.1</maven.plugin.javadoc.version>
+    <maven.plugin.jaxb2.version>0.14.0</maven.plugin.jaxb2.version>
     <maven.plugin.processor.version>3.3.3</maven.plugin.processor.version>
     <maven.plugin.resources.version>3.1.0</maven.plugin.resources.version>
     <maven.plugin.site.version>3.8.2</maven.plugin.site.version>
