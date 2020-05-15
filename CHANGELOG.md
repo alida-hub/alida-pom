@@ -14,6 +14,16 @@ The format of the file is based on a template from [Keep a Changelog](http://kee
 
 ### Fixed
 
+## [2.0] - 2020-05-15
+Birgit Moeller - <birgit.moeller@informatik.uni-halle.de>
+- Released Alida Parent POM 2.0
+
+### Added
+- JAXB dependencies
+
+### Changed
+- replaced online help system based on JavaHelp by new online help concept based on operator annotations which does not depend on external libraries anymore
+
 ## [1.4] - 2020-02-20
 Birgit Moeller - <birgit.moeller@informatik.uni-halle.de>
 - Released Alida Parent POM 1.4
