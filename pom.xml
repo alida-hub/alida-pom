@@ -8,7 +8,7 @@
 
   <name>alida-pom</name>
   <description>Alida - Advanced Library for Integrated Development of Data Analysis Applications</description> 
-  <url>http://www.informatik.uni-halle.de/alida</url>
+  <url>https://www.informatik.uni-halle.de/alida</url>
   <inceptionYear>2018</inceptionYear>
 
   <properties>
@@ -24,7 +24,7 @@
 
     <!-- SciJava pom file defining several global dependencies
 	 and versions artifact versions MiToBo relies on -->
-    <scijava.version>28.0.0</scijava.version>
+    <scijava.version>29.2.1</scijava.version>
 
     <!-- versions of artifacts we depend on -->
     <jakarta.xml.bindapi.version>2.3.2</jakarta.xml.bindapi.version>
@@ -57,13 +57,13 @@
   <licenses>
     <license>
       <name>GNU General Public License version 3.0</name>
-      <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+      <url>https://www.gnu.org/licenses/gpl-3.0.html</url>
     </license>
   </licenses>
 
   <organization>
     <name>Martin Luther University Halle-Wittenberg, Institute of Computer Science, Pattern Recognition and Bioinformatics</name>
-    <url>http://www.informatik.uni-halle.de/arbeitsgruppen/mustererkennung/</url>
+    <url>https://www.informatik.uni-halle.de/arbeitsgruppen/mustererkennung/</url>
   </organization>
 
   <developers>
@@ -72,7 +72,7 @@
       <email>birgit.moeller@informatik.uni-halle.de</email>
       <name>Birgit Moeller</name>
       <organization>Martin Luther University Halle-Wittenberg</organization>
-      <organizationUrl>http://www.informatik.uni-halle.de/moeller</organizationUrl>
+      <organizationUrl>https://www.informatik.uni-halle.de/moeller</organizationUrl>
       <roles>
 	<role>Developer</role>
       </roles>
@@ -83,7 +83,7 @@
       <email>stefan.posch@informatik.uni-halle.de</email>
       <name>Stefan Posch</name>
       <organization>Martin Luther University Halle-Wittenberg</organization>
-      <organizationUrl>http://www.informatik.uni-halle.de/posch</organizationUrl>
+      <organizationUrl>https://www.informatik.uni-halle.de/posch</organizationUrl>
       <roles>
 	<role>Developer</role>
       </roles>
@@ -333,7 +333,7 @@
     </repository>
     <repository>
       <id>imagej.public</id>
-      <url>http://maven.imagej.net/content/groups/public</url>
+      <url>https://maven.imagej.net/content/groups/public</url>
     </repository>
   </repositories>
 
