@@ -30,7 +30,7 @@
     <jakarta.xml.bindapi.version>2.3.2</jakarta.xml.bindapi.version>
     <jargs.version>1.0</jargs.version>
     <jaxb.runtime.version>2.3.2</jaxb.runtime.version>
-    <jgit.version>6.0.0.202111291000-r</jgit.version>
+    <jgit.version>5.13.0.202109080827-r</jgit.version>
     <sezpoz.version>1.13</sezpoz.version>
     <slf4j.version>1.7.30</slf4j.version>
     <xmlbeans.version>2.6.0</xmlbeans.version>
