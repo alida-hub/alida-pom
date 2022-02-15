@@ -24,13 +24,13 @@
 
     <!-- SciJava pom file defining several global dependencies
 	 and versions artifact versions MiToBo relies on -->
-    <scijava.version>30.0.0</scijava.version>
+    <scijava.version>31.1.0</scijava.version>
 
     <!-- versions of artifacts we depend on -->
     <jakarta.xml.bindapi.version>2.3.2</jakarta.xml.bindapi.version>
     <jargs.version>1.0</jargs.version>
     <jaxb.runtime.version>2.3.2</jaxb.runtime.version>
-    <jgit.version>5.11.0.202103091610-r</jgit.version>
+    <jgit.version>6.0.0.202111291000-r</jgit.version>
     <sezpoz.version>1.13</sezpoz.version>
     <slf4j.version>1.7.30</slf4j.version>
     <xmlbeans.version>2.6.0</xmlbeans.version>
@@ -322,13 +322,13 @@
     <repository>
       <id>snapshots</id>
       <name>Archiva Public Snapshot Repository on 'moon'</name>
-      <url>https://moon.informatik.uni-halle.de/archiva/repository/snapshots-pub/</url>
+      <url>https://moon.informatik.uni-halle.de/repository/snapshots-pub/</url>
       <layout>default</layout>
     </repository>
     <repository>
       <id>releases</id>
       <name>Archiva Release Repository on 'moon'</name>
-      <url>https://moon.informatik.uni-halle.de/archiva/repository/releases/</url>
+      <url>https://moon.informatik.uni-halle.de/repository/releases/</url>
       <layout>default</layout>
     </repository>
     <repository>
@@ -341,13 +341,13 @@
     <pluginRepository>
       <id>snapshots</id>
       <name>Archiva Public Snapshot Repository on 'moon'</name>
-      <url>https://moon.informatik.uni-halle.de/archiva/repository/snapshots-pub/</url>
+      <url>https://moon.informatik.uni-halle.de/repository/snapshots-pub/</url>
       <layout>default</layout>
     </pluginRepository>
     <pluginRepository>
       <id>releases</id>
       <name>Archiva Release Repository on 'moon'</name>
-      <url>https://moon.informatik.uni-halle.de/archiva/repository/releases/</url>
+      <url>https://moon.informatik.uni-halle.de/repository/releases/</url>
       <layout>default</layout>
     </pluginRepository>
   </pluginRepositories>
@@ -428,12 +428,12 @@
     <snapshotRepository>
       <id>snapshots-pub</id>
       <name>Archiva Public Snapshot Repository on 'moon'</name>
-      <url>https://moon.informatik.uni-halle.de/archiva/repository/snapshots-pub/</url>
+      <url>https://moon.informatik.uni-halle.de/repository/snapshots-pub</url>
     </snapshotRepository>
     <repository>
       <id>releases</id>
       <name>Archiva Release Repository on 'moon'</name>
-      <url>https://moon.informatik.uni-halle.de/archiva/repository/releases/</url>
+      <url>https://moon.informatik.uni-halle.de/repository/releases/</url>
     </repository>
   </distributionManagement>
 
