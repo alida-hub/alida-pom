@@ -33,7 +33,7 @@
     <jgit.version>5.13.0.202109080827-r</jgit.version>
     <sezpoz.version>1.13</sezpoz.version>
     <slf4j.version>1.7.30</slf4j.version>
-    <xmlbeans.version>2.6.0</xmlbeans.version>
+    <xmlbeans.version>3.0.0</xmlbeans.version>
     
     <!-- versions of public Maven plugins -->
     <maven.plugin.assembly.version>3.3.0</maven.plugin.assembly.version>
