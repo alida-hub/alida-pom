@@ -10,6 +10,14 @@ The format of the file is based on a template from [Keep a Changelog](http://kee
 ### Removed
 ### Fixed
 
+## [2.3] - 2023-07-31
+Birgit Moeller - <birgit.moeller@informatik.uni-halle.de>
+- Released Alida Parent POM 2.3
+### Changed
+- updated SciJava and various other dependencies and Maven plugins
+### Fixed
+- fixed Archiva repository URLS
+
 ## [2.2] - 2021-04-09
 Birgit Moeller - <birgit.moeller@informatik.uni-halle.de>
 - Released Alida Parent POM 2.2
