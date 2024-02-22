@@ -16,7 +16,7 @@
     <!-- general settings -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     
-    <YEAR>2023</YEAR>
+    <YEAR>2024</YEAR>
     <java.source.version>1.8</java.source.version>
     
     <!-- settings for Alida stuff -->
@@ -24,7 +24,7 @@
 
     <!-- SciJava pom file defining several global dependencies
 	 and versions artifact versions MiToBo relies on -->
-    <scijava.version>36.0.0</scijava.version>
+    <scijava.version>37.0.0</scijava.version>
 
     <!-- versions of artifacts we depend on -->
     <jakarta.xml.bindapi.version>4.0.0</jakarta.xml.bindapi.version>
@@ -32,24 +32,24 @@
     <jaxb.runtime.version>4.0.3</jaxb.runtime.version>
     <jgit.version>5.13.2.202306221912-r</jgit.version> <!-- note: jgit >= 6.0 requires Java 11 -->
     <sezpoz.version>1.13</sezpoz.version>
-    <slf4j.version>2.0.7</slf4j.version>
+    <slf4j.version>2.0.12</slf4j.version>
     <xmlbeans.version>3.0.0</xmlbeans.version> <!-- neu: 5.1.1 -->
     
     <!-- versions of public Maven plugins -->
     <maven.plugin.assembly.version>3.6.0</maven.plugin.assembly.version>
-    <maven.plugin.buildhelper.version>3.4.0</maven.plugin.buildhelper.version>
-    <maven.plugin.compiler.version>3.11.0</maven.plugin.compiler.version>
-    <maven.plugin.dependency.version>3.6.0</maven.plugin.dependency.version>
-    <maven.plugin.enforcer.version>3.3.0</maven.plugin.enforcer.version>
-    <maven.plugin.exec.version>3.1.0</maven.plugin.exec.version>
+    <maven.plugin.buildhelper.version>3.5.0</maven.plugin.buildhelper.version>
+    <maven.plugin.compiler.version>3.12.1</maven.plugin.compiler.version>
+    <maven.plugin.dependency.version>3.6.1</maven.plugin.dependency.version>
+    <maven.plugin.enforcer.version>3.4.1</maven.plugin.enforcer.version>
+    <maven.plugin.exec.version>3.1.1</maven.plugin.exec.version>
     <maven.plugin.filtering.version>3.3.1</maven.plugin.filtering.version>
     <maven.plugin.jar.version>3.3.0</maven.plugin.jar.version>
-    <maven.plugin.javadoc.version>3.5.0</maven.plugin.javadoc.version>
+    <maven.plugin.javadoc.version>3.6.3</maven.plugin.javadoc.version>
     <maven.plugin.jaxb2.version>0.15.3</maven.plugin.jaxb2.version>
-    <maven.plugin.processor.version>5.0-jdk8-rc3</maven.plugin.processor.version>
+    <maven.plugin.processor.version>5.0-jdk8</maven.plugin.processor.version>
     <maven.plugin.resources.version>3.3.1</maven.plugin.resources.version>
-    <maven.plugin.site.version>4.0.0-M9</maven.plugin.site.version>
-    <maven.plugin.surefire.version>3.1.2</maven.plugin.surefire.version>
+    <maven.plugin.site.version>4.0.0-M13</maven.plugin.site.version>
+    <maven.plugin.surefire.version>3.2.5</maven.plugin.surefire.version>
     <maven.plugin.xmlbeans.version>2.3.3</maven.plugin.xmlbeans.version>
     
   </properties>
