@@ -30,7 +30,7 @@
     <jakarta.xml.bindapi.version>4.0.2</jakarta.xml.bindapi.version>
     <jargs.version>1.0</jargs.version>
     <jaxb.runtime.version>4.0.5</jaxb.runtime.version>
-    <jgit.version>5.13.3.202401111512-r</jgit.version> <!-- note: jgit >= 6.0 requires Java 11 -->
+    <jgit.version>7.2.1.202505142326-r</jgit.version> <!-- note: jgit >= 6.0 requires Java 11 -->
     <sezpoz.version>1.13</sezpoz.version>
     <slf4j.version>2.0.17</slf4j.version>
     <xmlbeans.version>3.1.0</xmlbeans.version> <!-- neu: 5.1.1 -->
