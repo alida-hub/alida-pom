@@ -16,20 +16,20 @@
     <!-- general settings -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     
-    <YEAR>2025</YEAR>
+    <YEAR>2026</YEAR>
     <java.source.version>1.8</java.source.version>
 
     <!-- settings for Alida stuff -->
     <latexlet.version>1.2f8-SNAPSHOT</latexlet.version>
 
     <!-- SciJava pom file defining several global dependencies
-	 and versions artifact versions MiToBo relies on -->
-    <scijava.version>40.0.0</scijava.version>
+      and versions artifact versions MiToBo relies on -->
+    <scijava.version>43.0.0</scijava.version>
 
     <!-- versions of artifacts we depend on -->
-    <jakarta.xml.bindapi.version>4.0.2</jakarta.xml.bindapi.version>
+    <jakarta.xml.bindapi.version>4.0.4</jakarta.xml.bindapi.version>
     <jargs.version>1.0</jargs.version>
-    <jaxb.runtime.version>4.0.5</jaxb.runtime.version>
+    <jaxb.runtime.version>4.0.6</jaxb.runtime.version>
     <jgit.version>5.13.3.202401111512-r</jgit.version> <!-- note: jgit >= 6.0 requires Java 11 -->
     <sezpoz.version>1.13</sezpoz.version>
     <slf4j.version>2.0.17</slf4j.version>
@@ -37,11 +37,11 @@
     
     <!-- versions of public Maven plugins -->
     <maven.plugin.assembly.version>3.7.1</maven.plugin.assembly.version>
-    <maven.plugin.buildhelper.version>3.6.0</maven.plugin.buildhelper.version>
-    <maven.plugin.compiler.version>3.14.0</maven.plugin.compiler.version>
-    <maven.plugin.dependency.version>3.8.1</maven.plugin.dependency.version>
-    <maven.plugin.enforcer.version>3.5.0</maven.plugin.enforcer.version>
-    <maven.plugin.exec.version>3.5.0</maven.plugin.exec.version>
+    <maven.plugin.buildhelper.version>3.6.1</maven.plugin.buildhelper.version>
+    <maven.plugin.compiler.version>3.14.1</maven.plugin.compiler.version>
+    <maven.plugin.dependency.version>3.9.0</maven.plugin.dependency.version>
+    <maven.plugin.enforcer.version>3.6.2</maven.plugin.enforcer.version>
+    <maven.plugin.exec.version>3.6.1</maven.plugin.exec.version>
     <maven.plugin.filtering.version>3.4.0</maven.plugin.filtering.version>
     <maven.plugin.jar.version>3.4.2</maven.plugin.jar.version>
     <maven.plugin.javadoc.version>3.6.3</maven.plugin.javadoc.version> <!-- current: 3.11.2 -->
@@ -49,7 +49,7 @@
     <maven.plugin.processor.version>5.1-jdk8</maven.plugin.processor.version>
     <maven.plugin.resources.version>3.3.1</maven.plugin.resources.version>
     <maven.plugin.site.version>4.0.0-M16</maven.plugin.site.version>
-    <maven.plugin.surefire.version>3.5.2</maven.plugin.surefire.version>
+    <maven.plugin.surefire.version>3.5.4</maven.plugin.surefire.version>
     <maven.plugin.xmlbeans.version>2.3.3</maven.plugin.xmlbeans.version>
     
   </properties>
@@ -95,30 +95,29 @@
     
     <pluginManagement>
       <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>${maven.plugin.enforcer.version}</version>
+        </plugin>
 
-	<plugin>
-	  <groupId>org.apache.maven.plugins</groupId>
-	  <artifactId>maven-enforcer-plugin</artifactId>
-	  <version>${maven.plugin.enforcer.version}</version>
-	</plugin>
-
-	<plugin>
-	  <groupId>org.apache.maven.shared</groupId>
-	  <artifactId>maven-filtering</artifactId>
-	  <version>${maven.plugin.filtering.version}</version>
-	</plugin>
-	
-	<plugin>
-	  <groupId>org.apache.maven.plugins</groupId>
-	  <artifactId>maven-resources-plugin</artifactId>
-	  <version>${maven.plugin.resources.version}</version>
-	</plugin>
-	
-	<!-- copy dependencies incl. help jar to local folder -->
-	<plugin>
-	  <groupId>org.apache.maven.plugins</groupId>
-	  <artifactId>maven-dependency-plugin</artifactId>
-	  <version>${maven.plugin.dependency.version}</version>
+        <plugin>
+          <groupId>org.apache.maven.shared</groupId>
+          <artifactId>maven-filtering</artifactId>
+          <version>${maven.plugin.filtering.version}</version>
+        </plugin>
+        
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${maven.plugin.resources.version}</version>
+        </plugin>
+        
+        <!-- copy dependencies incl. help jar to local folder -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>${maven.plugin.dependency.version}</version>
           <configuration>
             <outputDirectory>
               ${project.build.directory}/dependency-jars
@@ -129,183 +128,180 @@
               <id>Copy dependency jars</id>
               <phase>process-resources</phase>
               <goals>
-		<goal>copy-dependencies</goal>
+                <goal>copy-dependencies</goal>
               </goals>
             </execution>
           </executions>
-	</plugin>
-	
-	<plugin>
-	  <groupId>org.apache.maven.plugins</groupId>
-	  <artifactId>maven-compiler-plugin</artifactId>
-	  <version>${maven.plugin.compiler.version}</version>
-	  <configuration>
-	    <source>${java.source.version}</source>
-	    <target>${java.target.version}</target>
-	    <executable>${env.JAVA_HOME}/bin/javac</executable> 
-	    <fork>true</fork>
-	    <encoding>${project.build.sourceEncoding}</encoding>
-	    <!-- Disable annotation processors during normal compilation! -->
-	    <compilerArgument>-proc:none</compilerArgument>
-	  </configuration>
-	</plugin>
-	
-	<plugin>
-	  <!-- run annotation processing -->
-	  <groupId>org.bsc.maven</groupId>
-	  <artifactId>maven-processor-plugin</artifactId>
-	  <version>${maven.plugin.processor.version}</version>
-	  <executions>
-	    <execution>
-	      <id>process</id>
-	      <goals>
-		<goal>process</goal>
-	      </goals>
-	      <phase>generate-sources</phase>
-	      <configuration>
-		<compilerArguments>-encoding ${project.build.sourceEncoding}</compilerArguments>
-	      </configuration>
-	    </execution>
-	    <execution>
-	      <id>process-test</id>
-	      <goals>
-		<goal>process-test</goal>
-	      </goals>
-	      <phase>generate-test-sources</phase>
-	      <configuration>
-		<compilerArguments>-encoding ${project.build.sourceEncoding}</compilerArguments>
-	      </configuration>
-	    </execution>
-	  </executions>
-	</plugin>
-	
-	<plugin>
-	  <groupId>org.apache.maven.plugins</groupId>
-	  <artifactId>maven-surefire-plugin</artifactId>
-	  <version>${maven.plugin.surefire.version}</version>
-	  <configuration>
-	    <skip>${skip.tests}</skip>
-	    <jvm>${env.JAVA_HOME}/bin/java</jvm>
-	    <forkMode>once</forkMode>
-	  </configuration>
-	</plugin>
-	
-	<plugin>
-	  <groupId>org.apache.maven.plugins</groupId>
-	  <artifactId>maven-jar-plugin</artifactId>
-	  <version>${maven.plugin.jar.version}</version>
-	</plugin>
-	
-	<plugin>
-	  <groupId>org.apache.maven.plugins</groupId>
-	  <artifactId>maven-site-plugin</artifactId>
-	  <version>${maven.plugin.site.version}</version>
-	</plugin>
-	
-	<plugin>
-	  <artifactId>maven-assembly-plugin</artifactId>
-	  <version>${maven.plugin.assembly.version}</version>
-	</plugin>
+        </plugin>
+          
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven.plugin.compiler.version}</version>
+          <configuration>
+            <source>${java.source.version}</source>
+            <target>${java.target.version}</target>
+            <executable>${env.JAVA_HOME}/bin/javac</executable> 
+            <fork>true</fork>
+            <encoding>${project.build.sourceEncoding}</encoding>
+            <!-- Disable annotation processors during normal compilation! -->
+            <compilerArgument>-proc:none</compilerArgument>
+          </configuration>
+        </plugin>
+        
+        <plugin>
+          <!-- run annotation processing -->
+          <groupId>org.bsc.maven</groupId>
+          <artifactId>maven-processor-plugin</artifactId>
+          <version>${maven.plugin.processor.version}</version>
+          <executions>
+            <execution>
+              <id>process</id>
+              <goals>
+                <goal>process</goal>
+              </goals>
+              <phase>generate-sources</phase>
+              <configuration>
+                <compilerArguments>-encoding ${project.build.sourceEncoding}</compilerArguments>
+              </configuration>
+            </execution>
+            <execution>
+              <id>process-test</id>
+              <goals>
+                <goal>process-test</goal>
+              </goals>
+              <phase>generate-test-sources</phase>
+              <configuration>
+                <compilerArguments>-encoding ${project.build.sourceEncoding}</compilerArguments>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${maven.plugin.surefire.version}</version>
+          <configuration>
+            <skip>${skip.tests}</skip>
+            <jvm>${env.JAVA_HOME}/bin/java</jvm>
+            <forkMode>once</forkMode>
+          </configuration>
+        </plugin>
+          
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${maven.plugin.jar.version}</version>
+        </plugin>
+        
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>${maven.plugin.site.version}</version>
+        </plugin>
+        
+        <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>${maven.plugin.assembly.version}</version>
+        </plugin>
 
-	<plugin>
-    <groupId>org.codehaus.mojo</groupId>
-    <artifactId>xmlbeans-maven-plugin</artifactId>
-	  <version>${maven.plugin.xmlbeans.version}</version>
-    <configuration>
-      <javaSource>1.8</javaSource>
-    </configuration>
-	</plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>xmlbeans-maven-plugin</artifactId>
+          <version>${maven.plugin.xmlbeans.version}</version>
+          <configuration>
+            <javaSource>1.8</javaSource>
+          </configuration>
+        </plugin>
 
-	<plugin>
-	  <groupId>org.apache.maven.plugins</groupId>
-	  <artifactId>maven-javadoc-plugin</artifactId>
-	  <version>${maven.plugin.javadoc.version}</version>
-	  <configuration>
-	    <skip>${skip.javadocs}</skip>
-      <javadocVersion>1.8.0</javadocVersion>
-	    <stylesheet>java</stylesheet>
-      <show>private</show>
-	    <additionalparam>-Xdoclint:none</additionalparam>
-	    <additionalOptions>-Xdoclint:none</additionalOptions>
-      <additionalJOption>-Xdoclint:none</additionalJOption>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${maven.plugin.javadoc.version}</version>
+          <configuration>
+            <skip>${skip.javadocs}</skip>
+            <javadocVersion>1.8.0</javadocVersion>
+            <stylesheet>java</stylesheet>
+            <show>private</show>
+            <additionalparam>-Xdoclint:none</additionalparam>
+            <additionalOptions>-Xdoclint:none</additionalOptions>
+            <additionalJOption>-Xdoclint:none</additionalJOption>
 
-      <taglets>
-        <taglet>
-		<tagletClass>latexlet.InlineLaTeXlet</tagletClass>
-		<tagletArtifact>
-		  <groupId>latexlet</groupId>
-		  <artifactId>latexlet</artifactId>
-		  <version>${latexlet.version}</version>
-		</tagletArtifact>
+            <taglets>
+              <taglet>
+                <tagletClass>latexlet.InlineLaTeXlet</tagletClass>
+                <tagletArtifact>
+                  <groupId>latexlet</groupId>
+                  <artifactId>latexlet</artifactId>
+                  <version>${latexlet.version}</version>
+                </tagletArtifact>
               </taglet>
               <taglet>
-		<tagletClass>latexlet.InlineBlockLaTeXlet</tagletClass>
-		<tagletArtifact>
-		  <groupId>latexlet</groupId>
-		  <artifactId>latexlet</artifactId>
-		  <version>${latexlet.version}</version>
-		</tagletArtifact>
+                <tagletClass>latexlet.InlineBlockLaTeXlet</tagletClass>
+                <tagletArtifact>
+                  <groupId>latexlet</groupId>
+                  <artifactId>latexlet</artifactId>
+                  <version>${latexlet.version}</version>
+                </tagletArtifact>
               </taglet>
               <taglet>
-		<tagletClass>latexlet.BlockLaTeXlet</tagletClass>
-		<tagletArtifact>
-		  <groupId>latexlet</groupId>
-		  <artifactId>latexlet</artifactId>
-		  <version>${latexlet.version}</version>
-		</tagletArtifact>
+                <tagletClass>latexlet.BlockLaTeXlet</tagletClass>
+                <tagletArtifact>
+                  <groupId>latexlet</groupId>
+                  <artifactId>latexlet</artifactId>
+                  <version>${latexlet.version}</version>
+                </tagletArtifact>
               </taglet>
             </taglets>
-
-	  </configuration>
-	  <executions>
-	    <execution>
-	      <id>attach-javadocs</id>
-	      <goals>
-		<goal>jar</goal>
-	      </goals>
-	    </execution>
-	  </executions>
-	</plugin>
-	
-	<plugin>
-	  <groupId>org.codehaus.mojo</groupId>
-	  <artifactId>exec-maven-plugin</artifactId>
-	  <version>${maven.plugin.exec.version}</version>
-	</plugin>
-	
-	<!--This plugin's configuration is used to store Eclipse m2e settings only. 
-	    It has no influence on the Maven build itself.-->
-	<plugin>
-	  <groupId>org.eclipse.m2e</groupId>
-	  <artifactId>lifecycle-mapping</artifactId>
-	  <version>1.0.0</version>
-	  <configuration>
-	    <lifecycleMappingMetadata>
-	      <pluginExecutions>
-		<pluginExecution>
-		  <pluginExecutionFilter>
-		    <groupId>
-		      org.apache.maven.plugins
-		    </groupId>
-		    <artifactId>
-		      maven-dependency-plugin
-		    </artifactId>
-		    <versionRange>[2.1,)</versionRange>
-		    <goals>
-		      <goal>copy-dependencies</goal>
-		    </goals>
-		  </pluginExecutionFilter>
-		  <action>
-		    <execute></execute>
-		  </action>
-		</pluginExecution>
-	      </pluginExecutions>
-	    </lifecycleMappingMetadata>
-	  </configuration>
-	</plugin>
-
-      </plugins>
-      
+          </configuration>
+          <executions>
+            <execution>
+              <id>attach-javadocs</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+          
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>${maven.plugin.exec.version}</version>
+        </plugin>
+        
+        <!--This plugin's configuration is used to store Eclipse m2e settings only. 
+            It has no influence on the Maven build itself.-->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>
+                      org.apache.maven.plugins
+                    </groupId>
+                    <artifactId>
+                      maven-dependency-plugin
+                    </artifactId>
+                    <versionRange>[2.1,)</versionRange>
+                    <goals>
+                      <goal>copy-dependencies</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <execute></execute>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>    
     </pluginManagement>
   </build>
   
@@ -333,10 +329,12 @@
       <url>https://moon.informatik.uni-halle.de/repository/releases/</url>
       <layout>default</layout>
     </repository>
+    <!--
     <repository>
       <id>imagej.public</id>
       <url>https://maven.imagej.net/content/groups/public</url>
     </repository>
+    -->
   </repositories>
 
   <pluginRepositories>
@@ -360,47 +358,47 @@
 
       <!-- SciJava dependency -->
       <dependency>
-	<groupId>org.scijava</groupId>
-	<artifactId>pom-scijava</artifactId>
-	<version>${scijava.version}</version>
-	<type>pom</type>
+        <groupId>org.scijava</groupId>
+        <artifactId>pom-scijava</artifactId>
+        <version>${scijava.version}</version>
+        <type>pom</type>
         <scope>import</scope>
       </dependency>
 
       <!-- Compile dependencies -->
       <dependency>
-	<groupId>net.java.sezpoz</groupId>
-	<artifactId>sezpoz</artifactId>
-	<version>${sezpoz.version}</version>
-	<scope>compile</scope>
+        <groupId>net.java.sezpoz</groupId>
+        <artifactId>sezpoz</artifactId>
+        <version>${sezpoz.version}</version>
+        <scope>compile</scope>
       </dependency>
       <dependency>
-	<groupId>net.sf</groupId>
-	<artifactId>jargs</artifactId>
-	<version>${jargs.version}</version>
-	<scope>compile</scope>
+        <groupId>net.sf</groupId>
+        <artifactId>jargs</artifactId>
+        <version>${jargs.version}</version>
+        <scope>compile</scope>
       </dependency>
       <!-- ... inherited from SciJava ...
       <dependency>
         <groupId>org.jgrapht</groupId>
-	<artifactId>jgrapht-core</artifactId>
+      	<artifactId>jgrapht-core</artifactId>
       </dependency>
       -->
       <dependency>
-	<groupId>org.eclipse.jgit</groupId>
-	<artifactId>org.eclipse.jgit</artifactId>
-	<version>${jgit.version}</version>
+        <groupId>org.eclipse.jgit</groupId>
+        <artifactId>org.eclipse.jgit</artifactId>
+        <version>${jgit.version}</version>
       </dependency>
       <dependency> 
-	<groupId>org.slf4j</groupId>
-	<artifactId>slf4j-log4j12</artifactId>
-	<version>${slf4j.version}</version>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>${slf4j.version}</version>
       </dependency>
       <dependency>
-	<groupId>org.apache.xmlbeans</groupId>
-	<artifactId>xmlbeans</artifactId>
-	<version>${xmlbeans.version}</version>
-	<scope>compile</scope>
+        <groupId>org.apache.xmlbeans</groupId>
+        <artifactId>xmlbeans</artifactId>
+        <version>${xmlbeans.version}</version>
+        <scope>compile</scope>
       </dependency>
       <!-- ... inherited from SciJava ...
       <dependency>
@@ -412,16 +410,16 @@
 
       <!-- API, java.xml.bind module -->
       <dependency>
-	<groupId>jakarta.xml.bind</groupId>
-	<artifactId>jakarta.xml.bind-api</artifactId>
-	<version>${jakarta.xml.bindapi.version}</version>
+        <groupId>jakarta.xml.bind</groupId>
+        <artifactId>jakarta.xml.bind-api</artifactId>
+        <version>${jakarta.xml.bindapi.version}</version>
       </dependency>
       <!-- Runtime, com.sun.xml.bind module -->
       <dependency>
-	<groupId>org.glassfish.jaxb</groupId>
-	<artifactId>jaxb-runtime</artifactId>
-	<version>${jaxb.runtime.version}</version>
-	<scope>runtime</scope>
+        <groupId>org.glassfish.jaxb</groupId>
+        <artifactId>jaxb-runtime</artifactId>
+        <version>${jaxb.runtime.version}</version>
+        <scope>runtime</scope>
       </dependency>    
     </dependencies>
   </dependencyManagement>
