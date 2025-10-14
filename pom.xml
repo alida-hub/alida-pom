@@ -3,7 +3,7 @@
 
   <groupId>de.unihalle.informatik.Alida</groupId>
   <artifactId>alida-pom</artifactId>
-  <version>2.5-SNAPSHOT</version>
+  <version>2.5</version>
   <packaging>pom</packaging>
 
   <name>alida-pom</name>
@@ -16,7 +16,7 @@
     <!-- general settings -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     
-    <YEAR>2026</YEAR>
+    <YEAR>2025</YEAR>
     <java.source.version>1.8</java.source.version>
 
     <!-- settings for Alida stuff -->

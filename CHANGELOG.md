@@ -10,6 +10,12 @@ The format of the file is based on a template from [Keep a Changelog](http://kee
 ### Removed
 ### Fixed
 
+## [2.5] - 2025-10-14
+Birgit Moeller - <birgit.moeller@informatik.uni-halle.de>
+- Released Alida Parent POM 2.5
+### Changed
+- updated to SciJava 43.0.0, updated various other dependencies and Maven plugin versions
+
 ## [2.4] - 2025-03-13
 Birgit Moeller - <birgit.moeller@informatik.uni-halle.de>
 - Released Alida Parent POM 2.4
